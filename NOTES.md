@@ -4,8 +4,15 @@ OpenAI model with “luna” in its name: gpt-5.6-luna
 
 ## How to run
 1. Put your MindDo values in `.env` (never commit this file).
-2. Run `npm start`.
+2. Run `npm start` when Node.js/npm is installed, or run `set -a; . ./.env; set +a; ./.tools/node/bin/node server/index.js` with the bundled local runtime.
 3. Open http://localhost:3000.
+
+## Vercel setup
+- The page is served as static files from the project root.
+- Vercel runs `api/ask.js` as the server function for `/api/ask`.
+- The function calls `getKey()` on the server and sends the AI request from the server, so the token and AI key never go to the page.
+- In the Vercel project settings, add `KEYGEN_URL` and `KEYGEN_TOKEN` as environment variables for the environments you use (Preview and/or Production). Do not upload `.env`.
+- No database or extra Vercel setting is needed for this version.
 
 ## What is done
 - Students can ask the AI a homework question and press Enter or Get help.
