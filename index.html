@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>StudyBuddy</title><link rel="stylesheet" href="styles.css" /></head>
+<body>
+  <main class="shell">
+    <header class="hero"><div class="logo">✦</div><div><p class="eyebrow">YOUR PATIENT STUDY PARTNER</p><h1>StudyBuddy</h1><p class="subtitle">Understand the work. Build confidence. Keep learning.</p></div></header>
+    <section class="notice"><strong>Study tip:</strong> StudyBuddy gives hints and steps so you can learn—not just copy an answer.</section>
+    <section class="grid">
+      <div class="card ask-card"><div class="card-heading"><div><p class="eyebrow">START HERE</p><h2>What are you working on?</h2></div><span class="sparkle">✦</span></div><p class="muted">Tell me the question, subject, and what you have tried so far.</p><textarea id="question" placeholder="Example: I’m stuck on adding fractions. I tried finding a common denominator, but I’m not sure what to do next..."></textarea><div class="quick-prompts"><button data-prompt="Give me a simple example of this topic.">＋ Example</button><button data-prompt="Give me a small hint, not the final answer.">＋ Hint</button><button data-prompt="What should I study next?">＋ Study tip</button></div><button id="ask" class="primary">Get help <span>→</span></button><p class="tiny">Check important answers with your teacher. AI can make mistakes.</p></div>
+      <div class="card answer-card"><div class="card-heading"><div><p class="eyebrow">YOUR EXPLANATION</p><h2 id="answer-title">Your answer will appear here</h2></div><span class="answer-icon">☼</span></div><div id="answer" class="answer empty"><p>Ask a question to get a friendly, step-by-step explanation.</p><p class="small">StudyBuddy will start by explaining what the problem is asking.</p></div><div id="error" class="error" hidden></div></div>
+    </section>
+    <section class="card tips"><div><p class="eyebrow">A LITTLE EXTRA</p><h2>Study habits that help</h2></div><div class="tip-row"><div><b>✎ Write it down</b><p>Make a quick note in your own words.</p></div><div><b>◷ Take a pause</b><p>Try 20 minutes, then take a short break.</p></div><div><b>✓ Check your work</b><p>Ask: “Does this make sense?”</p></div></div></section>
+  </main><script src="storage.js"></script><script src="app.js"></script>
+</body></html>
