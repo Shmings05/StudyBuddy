@@ -28,6 +28,11 @@ function renderMessages() {
 }
 async function askStudyBuddy() {
   const text = question.value.trim(); if (!text) { question.focus(); return; }
+  if (window.location.protocol === 'file:') {
+    errorBox.textContent = 'StudyBuddy needs its local server. Open http://localhost:3000 instead of opening index.html directly.';
+    errorBox.hidden = false;
+    return;
+  }
   const chat = activeConversation();
   chat.title = chat.messages.length ? chat.title : text.slice(0, 30);
   chat.messages.push({ role: 'user', content: text });
