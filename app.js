@@ -4,6 +4,8 @@ const answer = document.querySelector('#answer');
 const answerTitle = document.querySelector('#answer-title');
 const errorBox = document.querySelector('#error');
 const studyState = window.studyStorage.loadStudyState();
+const resetRequested = new URLSearchParams(window.location.search).has('reset');
+if (resetRequested) { delete studyState.profile; window.studyStorage.saveStudyState(studyState); }
 const welcome = document.querySelector('#welcome');
 const landing = document.querySelector('#landing');
 const survey = document.querySelector('#survey');
