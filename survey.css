@@ -5,3 +5,5 @@
 .survey-form{display:grid;gap:14px;margin-top:24px}
 .survey-form label{display:grid;gap:7px;font-weight:700;font-size:14px}
 .survey-form select{padding:12px;border:1px solid #dcd3c8;border-radius:12px;background:white;color:var(--ink);font:inherit}
+.change-survey{margin-left:auto;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--muted);font-weight:700}
+@media (max-width:760px){.hero{align-items:flex-start}.change-survey{font-size:12px}}
