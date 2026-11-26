@@ -5,6 +5,7 @@ const answerTitle = document.querySelector('#answer-title');
 const errorBox = document.querySelector('#error');
 const studyState = window.studyStorage.loadStudyState();
 const welcome = document.querySelector('#welcome');
+const landing = document.querySelector('#landing');
 const survey = document.querySelector('#survey');
 const conversationList = document.querySelector('#conversation-list');
 
@@ -12,7 +13,8 @@ studyState.conversations ||= [{ id: crypto.randomUUID(), title: 'New conversatio
 studyState.activeConversationId ||= studyState.conversations[0].id;
 if (studyState.conversation?.length && !studyState.conversations[0].messages.length) studyState.conversations[0].messages = studyState.conversation;
 const activeConversation = () => studyState.conversations.find(item => item.id === studyState.activeConversationId) || studyState.conversations[0];
-if (studyState.profile) welcome.hidden = true;
+if (studyState.profile) { welcome.hidden = true; landing.hidden = true; } else welcome.hidden = true;
+document.querySelector('#start-studybuddy').addEventListener('click', () => { landing.hidden = true; welcome.hidden = false; });
 function saveState() { window.studyStorage.saveStudyState(studyState); }
 function safeText(text) { return text.replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[character])); }
 function renderConversationList() {
@@ -47,5 +49,5 @@ document.querySelector('#new-conversation').addEventListener('click', () => { co
 ask.addEventListener('click', askStudyBuddy);
 question.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); askStudyBuddy(); } });
 document.querySelectorAll('[data-prompt]').forEach(button => button.addEventListener('click', () => { question.value = `${question.value.trim()}\n\n${button.dataset.prompt}`.trim(); question.focus(); }));
-survey.addEventListener('submit', event => { event.preventDefault(); studyState.profile = { grade: document.querySelector('#grade').value, subject: document.querySelector('#subject').value, style: document.querySelector('#style').value }; saveState(); welcome.hidden = true; });
+survey.addEventListener('submit', event => { event.preventDefault(); studyState.profile = { grade: document.querySelector('#grade').value, subject: document.querySelector('#subject').value, style: document.querySelector('#style').value }; saveState(); welcome.hidden = true; landing.hidden = true; });
 renderConversationList(); renderMessages();
