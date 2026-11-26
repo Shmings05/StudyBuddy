@@ -23,7 +23,7 @@ OpenAI model with “luna” in its name: gpt-5.6-luna
 - AI errors show a friendly message; server details stay in the server log.
 
 ## MVP check
-1. Ask the AI for homework help — Works. Type a question and press Enter or Get help.
+1. Ask the AI for homework help — Works. Verified locally with a fractions question. Type a question and press Enter or Get help.
 2. Receive personalized study tips — Works. Use the Study tip button with your own question.
 3. Request examples — Works. Use the Example button and send the question.
 4. Get correct, safe answers — Works in the tested path. Try a simple real question and check the steps with a teacher.
