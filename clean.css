@@ -1,7 +1,8 @@
-body{background:#f6f8f7;color:#24313a}
+body{background:#f6f8f7;color:#24313a;font-family:"Trebuchet MS","Avenir Next",sans-serif}
 .shell{max-width:1040px;padding:54px 24px 76px}
 .hero{margin-bottom:34px;align-items:flex-start}
 .logo{width:48px;height:48px;border-radius:14px;font-size:24px}
+h1,h2{font-family:"Trebuchet MS","Avenir Next",sans-serif}
 h1{font-size:clamp(42px,6vw,58px);letter-spacing:-.07em}
 .subtitle{font-size:15px;color:#718084}
 .notice{max-width:760px;margin:0 auto 24px;padding:13px 17px;border:0;background:#edf5f4;color:#527174;font-size:14px}
