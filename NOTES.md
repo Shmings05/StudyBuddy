@@ -16,6 +16,7 @@ OpenAI model with “luna” in its name: gpt-5.6-luna
 
 ## What is done
 - Students can ask the AI a homework question and press Enter or Get help.
+- Follow-up questions now keep the conversation visible and send earlier turns to the AI.
 - Students complete a short start-up survey for grade, subject, and preferred help style.
 - The page shows Thinking… and prevents duplicate requests.
 - The AI gives a hint or small step first instead of directly handing over the answer.

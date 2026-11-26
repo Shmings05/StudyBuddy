@@ -11,14 +11,14 @@ function errorReply(error) {
   return { error: { message: error.message || 'StudyBuddy could not answer right now.', fix: error.fix } };
 }
 
-async function askStudyBuddy(question, profile = {}) {
+async function askStudyBuddy(question, profile = {}, history = []) {
   try {
     let key = await getKey();
-    let response = await callOpenAI(key, question, profile);
+    let response = await callOpenAI(key, question, profile, history);
     if (response.status === 401) {
       invalidateKey();
       key = await getKey();
-      response = await callOpenAI(key, question, profile);
+      response = await callOpenAI(key, question, profile, history);
     }
     const body = await response.json();
     if (!response.ok) {
@@ -32,11 +32,12 @@ async function askStudyBuddy(question, profile = {}) {
   }
 }
 
-function callOpenAI(key, question, profile) {
+function callOpenAI(key, question, profile, history) {
+  const messages = [{ role: 'system', content: systemInstructions }, ...history.filter(item => item.role === 'user' || item.role === 'assistant'), { role: 'user', content: `Student profile: grade=${profile.grade || 'unknown'}, subject=${profile.subject || 'unknown'}, preferred help=${profile.style || 'small steps'}.\n\nHomework question: ${question}` }];
   return fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model, messages: [{ role: 'system', content: systemInstructions }, { role: 'user', content: `Student profile: grade=${profile.grade || 'unknown'}, subject=${profile.subject || 'unknown'}, preferred help=${profile.style || 'small steps'}.\n\nHomework question: ${question}` }] }),
+    body: JSON.stringify({ model, messages }),
   });
 }
 

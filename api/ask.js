@@ -10,7 +10,7 @@ module.exports = async function handler(request, response) {
     if (!question) {
       return response.status(400).json({ error: { message: 'Please type a homework question first.', fix: 'Add a question and try again.' } });
     }
-    return response.status(200).json(await askStudyBuddy(question, request.body.profile || {}));
+    return response.status(200).json(await askStudyBuddy(question, request.body.profile || {}, request.body.history || []));
   } catch (error) {
     console.error(error.fix || 'StudyBuddy request failed.');
     return response.status(500).json({ error: { message: error.message || 'StudyBuddy could not answer right now.', fix: error.fix } });

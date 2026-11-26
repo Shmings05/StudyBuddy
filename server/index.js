@@ -17,7 +17,8 @@ const server = http.createServer((request, response) => {
       try {
         const question = JSON.parse(raw).question?.trim();
         if (!question) return send(response, 400, { error: { message: 'Please type a homework question first.', fix: 'Add a question and try again.' } });
-        send(response, 200, await askStudyBuddy(question, JSON.parse(raw).profile || {}));
+        const requestBody = JSON.parse(raw);
+        send(response, 200, await askStudyBuddy(question, requestBody.profile || {}, requestBody.history || []));
       } catch (error) { send(response, 400, { error: { message: 'StudyBuddy could not read that request.', fix: 'Try typing the question again.' } }); }
     });
     return;
