@@ -6,7 +6,11 @@ const sampleItems = [
 ];
 
 function loadStudyState() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { sampleItems }; }
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved) return saved;
+    return { sampleItems, conversations: [{ id: crypto.randomUUID(), title: 'New conversation', messages: [] }] };
+  }
   catch { return { sampleItems }; }
 }
 

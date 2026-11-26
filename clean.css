@@ -6,6 +6,7 @@ h1,h2{font-family:"Trebuchet MS","Avenir Next",sans-serif}
 h1{font-size:clamp(42px,6vw,58px);letter-spacing:-.07em}
 .subtitle{font-size:15px;color:#718084}
 .notice{max-width:760px;margin:0 auto 24px;padding:13px 17px;border:0;background:#edf5f4;color:#527174;font-size:14px}
+.conversation-panel{margin-bottom:18px;padding:18px 20px;background:#fbfcfa;border:1px solid #e1e8e5;border-radius:18px}.conversation-heading{display:flex;justify-content:space-between;align-items:center}.conversation-heading h2{font-size:19px}.new-conversation{padding:9px 13px;border-radius:10px;background:#edf5f4;color:#527174;font-weight:800}.conversation-list{display:flex;gap:9px;overflow-x:auto;padding-top:12px}.conversation-item{min-width:180px;display:grid;grid-template-columns:auto 1fr;column-gap:8px;text-align:left;padding:11px 13px;border:1px solid transparent;border-radius:12px;background:#f3f6f4;color:#405254}.conversation-item.active{border-color:#b7d8d3;background:#e8f3f1}.conversation-item span{grid-row:span 2;color:#b96752}.conversation-item b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.conversation-item small{color:#829093;font-size:11px;margin-top:3px}
 .grid{gap:18px}
 .card{border-color:#e1e8e5;border-radius:18px;box-shadow:0 8px 24px rgba(42,63,62,.06);padding:25px}
 .ask-card{border-top:4px solid #c8755d}
