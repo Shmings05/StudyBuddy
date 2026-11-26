@@ -4,7 +4,6 @@ const answer = document.querySelector('#answer');
 const answerTitle = document.querySelector('#answer-title');
 const errorBox = document.querySelector('#error');
 const studyState = window.studyStorage.loadStudyState();
-if (studyState.lastQuestion) question.value = studyState.lastQuestion;
 const welcome = document.querySelector('#welcome');
 const survey = document.querySelector('#survey');
 if (studyState.profile) welcome.hidden = true;

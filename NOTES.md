@@ -22,6 +22,7 @@ OpenAI model with “luna” in its name: gpt-5.6-luna
 - The AI receives this brief as its system instructions, with the key kept on the server.
 - Example, Hint, and Study tip prompts make personalized help easy to show in a video.
 - Saves on this computer only for now. The last question and sample items use browser localStorage.
+- The question box starts empty when the page opens so an old question does not repeat by accident.
 - AI errors show a friendly message; server details stay in the server log.
 
 ## MVP check
