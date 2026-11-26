@@ -4,21 +4,21 @@ const { getKey, invalidateKey } = require('./minddo-key');
 
 const model = 'gpt-5.6-luna';
 const brief = fs.readFileSync(path.join(__dirname, '..', 'BRIEF.md'), 'utf8');
-const systemInstructions = `${brief}\n\nImportant correction: never present guesses as facts. If unsure, say so and suggest checking with a teacher.`;
+const systemInstructions = `${brief}\n\nImportant corrections: never present guesses as facts. If unsure, say so and suggest checking with a teacher. Do not directly give the final homework answer first. Start with what the problem is asking, ask what the student tried if needed, and give one small hint or step at a time. Only reveal the final answer after guiding the student, and explain the reasoning so they learn instead of copying.`;
 
 function errorReply(error) {
   console.error(error.fix || 'StudyBuddy AI request failed.');
   return { error: { message: error.message || 'StudyBuddy could not answer right now.', fix: error.fix } };
 }
 
-async function askStudyBuddy(question) {
+async function askStudyBuddy(question, profile = {}) {
   try {
     let key = await getKey();
-    let response = await callOpenAI(key, question);
+    let response = await callOpenAI(key, question, profile);
     if (response.status === 401) {
       invalidateKey();
       key = await getKey();
-      response = await callOpenAI(key, question);
+      response = await callOpenAI(key, question, profile);
     }
     const body = await response.json();
     if (!response.ok) {
@@ -32,11 +32,11 @@ async function askStudyBuddy(question) {
   }
 }
 
-function callOpenAI(key, question) {
+function callOpenAI(key, question, profile) {
   return fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model, messages: [{ role: 'system', content: systemInstructions }, { role: 'user', content: question }] }),
+    body: JSON.stringify({ model, messages: [{ role: 'system', content: systemInstructions }, { role: 'user', content: `Student profile: grade=${profile.grade || 'unknown'}, subject=${profile.subject || 'unknown'}, preferred help=${profile.style || 'small steps'}.\n\nHomework question: ${question}` }] }),
   });
 }
 

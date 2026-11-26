@@ -1,7 +1,22 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>StudyBuddy</title><link rel="stylesheet" href="styles.css" /></head>
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>StudyBuddy</title><link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="survey.css" /></head>
 <body>
+  <section id="welcome" class="welcome-screen">
+    <div class="welcome-card">
+      <div class="logo">✦</div>
+      <p class="eyebrow">WELCOME TO STUDYBUDDY</p>
+      <h1>Let’s make studying feel easier.</h1>
+      <p class="muted">Answer three quick questions so the explanations fit you.</p>
+      <form id="survey" class="survey-form">
+        <label>What grade are you in?<select id="grade" required><option value="">Choose your grade</option><option>6th grade</option><option>7th grade</option><option>8th grade</option></select></label>
+        <label>What subject are you working on?<select id="subject" required><option value="">Choose a subject</option><option>Math</option><option>Science</option><option>English</option><option>History</option><option>Other</option></select></label>
+        <label>How should StudyBuddy help?<select id="style" required><option value="">Choose a style</option><option value="steps">Show me small steps</option><option value="examples">Use examples</option><option value="simple">Use simple words</option></select></label>
+        <button class="primary" type="submit">Start studying <span>→</span></button>
+      </form>
+      <p class="tiny">Your answers stay on this computer and personalize your study help.</p>
+    </div>
+  </section>
   <main class="shell">
     <header class="hero"><div class="logo">✦</div><div><p class="eyebrow">YOUR PATIENT STUDY PARTNER</p><h1>StudyBuddy</h1><p class="subtitle">Understand the work. Build confidence. Keep learning.</p></div></header>
     <section class="notice"><strong>Study tip:</strong> StudyBuddy gives hints and steps so you can learn—not just copy an answer.</section>

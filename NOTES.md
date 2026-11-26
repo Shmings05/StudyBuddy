@@ -16,14 +16,16 @@ OpenAI model with “luna” in its name: gpt-5.6-luna
 
 ## What is done
 - Students can ask the AI a homework question and press Enter or Get help.
+- Students complete a short start-up survey for grade, subject, and preferred help style.
 - The page shows Thinking… and prevents duplicate requests.
+- The AI gives a hint or small step first instead of directly handing over the answer.
 - The AI receives this brief as its system instructions, with the key kept on the server.
 - Example, Hint, and Study tip prompts make personalized help easy to show in a video.
 - Saves on this computer only for now. The last question and sample items use browser localStorage.
 - AI errors show a friendly message; server details stay in the server log.
 
 ## MVP check
-1. Ask the AI for homework help — Works. Verified locally with a fractions question. Type a question and press Enter or Get help.
+1. Ask the AI for homework help — Works. Verified locally with a profiled fractions question that returned a hint first. Complete the survey, type a question, and press Enter or Get help.
 2. Receive personalized study tips — Works. Use the Study tip button with your own question.
 3. Request examples — Works. Use the Example button and send the question.
 4. Get correct, safe answers — Works in the tested path. Try a simple real question and check the steps with a teacher.
