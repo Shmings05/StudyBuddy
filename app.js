@@ -9,7 +9,11 @@ const welcome = document.querySelector('#welcome');
 const survey = document.querySelector('#survey');
 if (studyState.profile) welcome.hidden = true;
 document.querySelector('#change-survey').addEventListener('click', () => { welcome.hidden = false; });
-function showAnswer(text) { answer.className = 'answer'; answer.innerHTML = text.split(/\n\n+/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join(''); }
+function showAnswer(text) {
+  answer.className = 'answer';
+  answer.innerHTML = text.split(/\n\n+/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+  if (window.MathJax) window.MathJax.typesetPromise([answer]);
+}
 async function askStudyBuddy() {
   const text = question.value.trim(); if (!text) { question.focus(); return; }
   window.studyStorage.saveStudyState({ ...studyState, lastQuestion: text, lastAskedAt: new Date().toISOString() });

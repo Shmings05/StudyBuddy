@@ -4,7 +4,7 @@ const { getKey, invalidateKey } = require('./minddo-key');
 
 const model = 'gpt-5.6-luna';
 const brief = fs.readFileSync(path.join(__dirname, '..', 'BRIEF.md'), 'utf8');
-const systemInstructions = `${brief}\n\nImportant corrections: never present guesses as facts. If unsure, say so and suggest checking with a teacher. Do not directly give the final homework answer first. Start with what the problem is asking, ask what the student tried if needed, and give one small hint or step at a time. Only reveal the final answer after guiding the student, and explain the reasoning so they learn instead of copying.`;
+const systemInstructions = `${brief}\n\nImportant corrections: never present guesses as facts. If unsure, say so and suggest checking with a teacher. Do not directly give the final homework answer first. Start with what the problem is asking, ask what the student tried if needed, and give one small hint or step at a time. Only reveal the final answer after guiding the student, and explain the reasoning so they learn instead of copying. For math, use LaTeX symbols inside \\( \\) for inline equations and \\[ \\] for equations on their own line, so the app can display real math symbols.`;
 
 function errorReply(error) {
   console.error(error.fix || 'StudyBuddy AI request failed.');
