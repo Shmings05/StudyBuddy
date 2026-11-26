@@ -10,7 +10,8 @@ function send(response, status, body, type = 'application/json') {
   response.end(type === 'application/json' ? JSON.stringify(body) : body);
 }
 const server = http.createServer((request, response) => {
-  if (request.method === 'POST' && request.url === '/api/ask') {
+  const pathname = new URL(request.url, 'http://localhost').pathname;
+  if (request.method === 'POST' && pathname === '/api/ask') {
     let raw = '';
     request.on('data', chunk => { raw += chunk; });
     request.on('end', async () => {
@@ -23,7 +24,7 @@ const server = http.createServer((request, response) => {
     });
     return;
   }
-  const requested = request.url === '/' ? '/index.html' : request.url;
+  const requested = pathname === '/' ? '/index.html' : pathname;
   const file = path.normalize(path.join(root, requested));
   if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) return send(response, 404, 'Not found', 'text/plain');
   send(response, 200, fs.readFileSync(file), types[path.extname(file)] || 'text/plain');
